@@ -84,16 +84,19 @@ open class RefreshComponent: UIView {
     
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
+        prepare()
     }
     
     public init(block: @escaping RefreshComponentAction) {
         super.init(frame: .zero)
         self.refreshingBlock = block
+        prepare()
     }
     
     public init(target: Any, action: Selector) {
         super.init(frame: .zero)
         setRefreshing(target: target, action: action)
+        prepare()
     }
     
     open func prepare() {
