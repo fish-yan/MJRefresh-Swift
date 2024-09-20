@@ -35,7 +35,7 @@ open class RefreshNormalFooter: RefreshFooter {
         return contentStackView
     }()
     
-    public override var state: RefreshState {
+    open override var state: RefreshState {
         didSet {
             switch state {
             case .idle:
@@ -81,13 +81,13 @@ open class RefreshNormalFooter: RefreshFooter {
         .noMoreData: Bundle.mj.localized(key: RefreshKey.footerNoMoreDataText) ?? "",
     ]
     
-    public override func prepare() {
+    open override func prepare() {
         super.prepare()
         stateLabel.isUserInteractionEnabled = true
         stateLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(stateLabelClick)))
     }
     
-    public override func placeSubViews() {
+    open override func placeSubViews() {
         super.placeSubViews()
         arrowView.tintColor = stateLabel.textColor
         let size = contentStackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
@@ -116,7 +116,7 @@ private extension RefreshNormalFooter {
 
 @objcMembers @objc(MJRefreshAutoNormalFooter)
 open class RefreshAutoNormalFooter: RefreshNormalFooter {
-    public override func prepare() {
+    open override func prepare() {
         super.prepare()
         isBack = false
     }

@@ -30,7 +30,7 @@ open class RefreshFooter: RefreshComponent {
     
     public var isBack = false
         
-    public override var state: RefreshState {
+    open override var state: RefreshState {
         didSet {
             guard let scrollView else { return }
             switch state {
@@ -65,7 +65,7 @@ open class RefreshFooter: RefreshComponent {
         }
     }
     
-    public override func prepare() {
+    open override func prepare() {
         super.prepare()
         frame.size.height = RefreshKey.footerHeight
     }
@@ -75,19 +75,20 @@ open class RefreshFooter: RefreshComponent {
         scrollViewContentSizeDidChange(nil)
     }
     
-    public func endRefreshingWithNoMoreData() {
+    open func endRefreshingWithNoMoreData() {
         MJDispatchOnMainQueue {
+            self.state = .noMoreData
             self.state = .noMoreData
         }
     }
     
-    public func resetNoMoreData() {
+    open func resetNoMoreData() {
         MJDispatchOnMainQueue {
             self.state = .idle
         }
     }
     
-    public override func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+    open override func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewContentSizeDidChange(change)
         
         guard let scrollView,
@@ -105,7 +106,7 @@ open class RefreshFooter: RefreshComponent {
         }
     }
     
-    public override func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+    open override func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewContentOffsetDidChange(change)
         guard let scrollView else { return }
         if state == .refreshing { return }

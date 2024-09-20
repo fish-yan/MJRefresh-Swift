@@ -39,7 +39,7 @@ open class RefreshHeader: RefreshComponent {
     
     private var insetTDelta: CGFloat = 0
     
-    public override var state: RefreshState {
+    open override var state: RefreshState {
         didSet {
             if state == .idle {
                 if oldValue != .refreshing { return }
@@ -50,12 +50,12 @@ open class RefreshHeader: RefreshComponent {
         }
     }
     
-    public override func prepare() {
+    open override func prepare() {
         super.prepare()
         frame.size.height = RefreshKey.headerHeight
     }
     
-    public override func placeSubViews() {
+    open override func placeSubViews() {
         super.placeSubViews()
         frame.origin.y = -frame.height - ignoredScrollViewContentInsetTop
     }
@@ -71,7 +71,7 @@ open class RefreshHeader: RefreshComponent {
         }
     }
 
-    public override func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
+    open override func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey : Any]?) {
         super.scrollViewContentOffsetDidChange(change)
         
         if state == .refreshing {

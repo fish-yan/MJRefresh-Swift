@@ -40,7 +40,7 @@ open class RefreshNormalHeader: RefreshHeader {
         return contentStackView
     }()
     
-    public override var state: RefreshState {
+    open override var state: RefreshState {
         didSet {
             switch state {
             case .idle:
@@ -89,17 +89,17 @@ open class RefreshNormalHeader: RefreshHeader {
         }
     }
     
-    public override func prepare() {
+    open override func prepare() {
         super.prepare()
         textConfiguration()
     }
     
-    public override func i18nDidChange() {
+    open override func i18nDidChange() {
         textConfiguration()
         super.i18nDidChange()
     }
     
-    public override func placeSubViews() {
+    open override func placeSubViews() {
         super.placeSubViews()
         arrowView.tintColor = stateLabel.textColor
         let size = contentStackView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)

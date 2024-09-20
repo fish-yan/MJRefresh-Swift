@@ -49,7 +49,7 @@ open class RefreshComponent: UIView {
     public var fastAnimationDuration: TimeInterval = 0.25
     public var slowAnimationDuration: TimeInterval = 0.4
     
-    public var state: RefreshState = .idle {
+    open var state: RefreshState = .idle {
         didSet {
             MJDispatchOnMainQueue {
                 self.setNeedsLayout()
@@ -86,7 +86,7 @@ open class RefreshComponent: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func prepare() {
+    open func prepare() {
         autoresizingMask = .flexibleWidth
         backgroundColor = .clear
     }
@@ -96,9 +96,7 @@ open class RefreshComponent: UIView {
         super.layoutSubviews()
     }
     
-    public func placeSubViews() {
-        
-    }
+    open func placeSubViews() { }
     
     open override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
@@ -137,20 +135,20 @@ open class RefreshComponent: UIView {
         slowAnimationDuration = 0
     }
     
-    public func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey: Any]?) { }
+    open func scrollViewContentOffsetDidChange(_ change: [NSKeyValueChangeKey: Any]?) { }
     
-    public func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey: Any]?) { }
+    open func scrollViewContentSizeDidChange(_ change: [NSKeyValueChangeKey: Any]?) { }
         
-    @objc public func i18nDidChange() {
+    @objc open func i18nDidChange() {
         placeSubViews()
     }
     
-    public func setRefreshing(target: Any, action: Selector) {
+    func setRefreshing(target: Any, action: Selector) {
         refreshingTarget = target
         refreshingAction = action
     }
     
-    public func beginRefreshing() {
+    open func beginRefreshing() {
         UIView.animate(withDuration: fastAnimationDuration) {
             self.alpha = 1;
         }
@@ -165,7 +163,7 @@ open class RefreshComponent: UIView {
         }
     }
     
-    public func endRefreshing() {
+    open func endRefreshing() {
         MJDispatchOnMainQueue {
             self.state = .idle
         }
