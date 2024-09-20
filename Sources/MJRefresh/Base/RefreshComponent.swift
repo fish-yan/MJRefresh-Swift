@@ -83,7 +83,17 @@ open class RefreshComponent: UIView {
     }
     
     required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+    }
+    
+    public init(block: @escaping RefreshComponentAction) {
+        super.init(frame: .zero)
+        self.refreshingBlock = block
+    }
+    
+    public init(target: Any, action: Selector) {
+        super.init(frame: .zero)
+        setRefreshing(target: target, action: action)
     }
     
     open func prepare() {

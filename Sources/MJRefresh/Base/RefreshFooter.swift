@@ -11,14 +11,14 @@ import UIKit
 open class RefreshFooter: RefreshComponent {
     
     @objc(footerWithRefreshingBlock:)
-    public static func footer(refreshing block: @escaping RefreshComponentAction) -> Self {
+    public static func footer(block: @escaping RefreshComponentAction) -> Self {
         let footer = Self.init()
         footer.refreshingBlock = block
         return footer
     }
     
     @objc(footerWithRefreshingTarget: refreshingAction:)
-    public static func footer(refreshing target: Any, action: Selector) -> Self {
+    public static func footer(target: Any, action: Selector) -> Self {
         let footer = Self.init()
         footer.setRefreshing(target: target, action: action)
         return footer
