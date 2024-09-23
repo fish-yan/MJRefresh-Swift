@@ -118,6 +118,6 @@ private extension RefreshNormalFooter {
 open class RefreshAutoNormalFooter: RefreshNormalFooter {
     open override func prepare() {
         super.prepare()
-        isBack = false
+        autoBack = false
     }
 }

@@ -28,7 +28,7 @@ open class RefreshFooter: RefreshComponent {
     
     private var lastBottomDelta: CGFloat = 0
     
-    public var isBack = false
+    public var autoBack = false
         
     open override var state: RefreshState {
         didSet {
@@ -97,7 +97,7 @@ open class RefreshFooter: RefreshComponent {
         }
         var contentHeight = size.height == 0 ? scrollView.contentSize.height : size.height
         contentHeight += ignoredScrollViewContentInsetBottom
-        if isBack {
+        if autoBack {
             let scrollHeight = scrollView.frame.height - scrollViewOriginalInset.top - scrollViewOriginalInset.bottom + ignoredScrollViewContentInsetBottom
             contentHeight = max(contentHeight, scrollHeight)
         }
