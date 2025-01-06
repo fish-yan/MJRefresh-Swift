@@ -43,7 +43,7 @@ open class RefreshComponent: UIView {
     var scrollViewOriginalInset: UIEdgeInsets = .zero
     weak var scrollView: UIScrollView?
     
-    private var refreshingTarget: Any?
+    weak private var refreshingTarget: AnyObject?
     private var refreshingAction: Selector?
     
     public var fastAnimationDuration: TimeInterval = 0.25
@@ -93,7 +93,7 @@ open class RefreshComponent: UIView {
         prepare()
     }
     
-    public init(target: Any, action: Selector) {
+    public init(target: AnyObject, action: Selector) {
         super.init(frame: .zero)
         setRefreshing(target: target, action: action)
         prepare()
@@ -156,7 +156,7 @@ open class RefreshComponent: UIView {
         placeSubViews()
     }
     
-    func setRefreshing(target: Any, action: Selector) {
+    func setRefreshing(target: AnyObject, action: Selector) {
         refreshingTarget = target
         refreshingAction = action
     }

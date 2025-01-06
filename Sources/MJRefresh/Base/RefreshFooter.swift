@@ -18,7 +18,7 @@ open class RefreshFooter: RefreshComponent {
     }
     
     @objc(footerWithRefreshingTarget: refreshingAction:)
-    public static func footer(target: Any, action: Selector) -> Self {
+    public static func footer(target: AnyObject, action: Selector) -> Self {
         let footer = Self.init()
         footer.setRefreshing(target: target, action: action)
         return footer

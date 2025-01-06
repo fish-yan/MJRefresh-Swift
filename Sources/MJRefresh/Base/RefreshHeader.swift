@@ -18,7 +18,7 @@ open class RefreshHeader: RefreshComponent {
     }
     
     @objc(headerWithRefreshingTarget: refreshingAction:)
-    public static func header(refreshing target: Any, action: Selector) -> Self {
+    public static func header(refreshing target: AnyObject, action: Selector) -> Self {
         let header = Self.init()
         header.setRefreshing(target: target, action: action)
         return header
